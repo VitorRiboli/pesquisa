@@ -25,7 +25,7 @@ public class Game implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	private String title;
 	private Platform platform;
 	
 	@ManyToOne
@@ -39,10 +39,10 @@ public class Game implements Serializable{
 		
 	}
 
-	public Game(Long id, String name, Platform platform, Genre genre) {
+	public Game(Long id, String title, Platform platform, Genre genre) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.title = title;
 		this.platform = platform;
 		this.genre = genre;
 	}
@@ -55,12 +55,12 @@ public class Game implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Platform getPlatform() {
@@ -87,7 +87,7 @@ public class Game implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(genre, id, name, platform);
+		return Objects.hash(id, title);
 	}
 
 	@Override
@@ -99,9 +99,10 @@ public class Game implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		return Objects.equals(genre, other.genre) && Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& platform == other.platform;
+		return Objects.equals(id, other.id) && Objects.equals(title, other.title);
 	}
+
+	
 	
 	
 	
