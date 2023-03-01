@@ -11,6 +11,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +28,11 @@ public class Game implements Serializable{
 	private String name;
 	private Platform platform;
 	
+	@ManyToOne
+	@JoinColumn(name= "genre_id")
 	private Genre genre;
 	
+	@OneToMany(mappedBy = "game")
 	private List<Record> records = new ArrayList<>();
 	
 	public Game() {

@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +23,7 @@ public class Genre implements Serializable{
 	private Long id;
 	private String name;
 	
+	@OneToMany(mappedBy = "genre")
 	private List<Game> games = new ArrayList<>();
 	
 	public Genre() {
