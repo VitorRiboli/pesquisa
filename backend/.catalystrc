@@ -1,0 +1,29 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "5280000000004001",
+      "name": "pesquisa2",
+      "domain": {
+        "id": "10054124138",
+        "name": "pesquisa2-804503960.development"
+      },
+      "env": [
+        {
+          "idx": 1,
+          "id": "804503960",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}
