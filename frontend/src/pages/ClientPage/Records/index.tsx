@@ -5,19 +5,25 @@ import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { RecordsResonse } from "./types";
 import LineTable from "../../../components/LineTable";
+import Pagination from "./Pagination";
 
 const BASE_URL = "http://localhost:8080";
 
 export default function Records() {
+
   const [records, setRecords] = useState<RecordsResonse>();
 
-  console.log(records);
+  const [activePage, setActivePage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/records?linesPerPage=12`).then((res) => {
+    axios.get(`${BASE_URL}/records?linesPerPage=16&page=${activePage}`).then((res) => {
       setRecords(res.data);
     });
-  }, []);
+  }, [activePage]);
+
+  function handlePage(index : number) {
+    setActivePage(index);
+  }
 
   return (
     <>
@@ -41,7 +47,15 @@ export default function Records() {
             ))}
           </tbody>
         </table>
-      </main>
+
+                
+        <Pagination 
+          totalPages={records?.totalPages} 
+          goToPage={handlePage} 
+          activePage={activePage} 
+        />
+
+      </main>s
 
       <Outlet />
     </>
