@@ -4,7 +4,7 @@ import axios from "axios";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { RecordsResonse } from "./types";
-import { formatDate } from "./utils";
+import LineTable from "../../../components/LineTable";
 
 const BASE_URL = "http://localhost:8080";
 
@@ -35,14 +35,9 @@ export default function Records() {
           </thead>
           <tbody>
             {records?.content.map((record) => (
-              <tr key={record.id}>
-                <td>{formatDate(record.moment)}</td>
-                <td>{record.name}</td>
-                <td>{record.age}</td>
-                <td className="text-secondary" >{record.platform}</td>
-                <td>{record.genreName}</td>
-                <td className="text-primary">{record.gameTitle}</td>
-              </tr>
+              <LineTable key={record.id} id={record.id} name={record.name} 
+              moment={record.moment} age={record.age} platform={record.platform} 
+              genreName={record.genreName} gameTitle={record.gameTitle}  />
             ))}
           </tbody>
         </table>
