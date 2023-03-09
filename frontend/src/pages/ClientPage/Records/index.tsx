@@ -1,8 +1,28 @@
 import "./styles.css";
 
+import axios from "axios";
 import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { RecordsResonse } from "./types";
+
+
+const BASE_URL = "http://localhost:8080";
 
 export default function Records() {
+ 
+  const [records, setRecords] = useState<RecordsResonse>();
+
+  console.log(records);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/records?linesPerPage=12`)
+      .then(res => {
+        setRecords(res.data);
+      })
+
+
+  }, []);
+
   return (
     <>
       <main className="page-container">
