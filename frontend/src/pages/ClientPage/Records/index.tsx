@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { RecordsResonse } from "./types";
 import LineTable from "../../../components/LineTable";
 import Pagination from "./Pagination";
+import Filters from "../../../components/Filters";
 
 const BASE_URL = "http://localhost:8080";
 
@@ -16,8 +17,9 @@ export default function Records() {
   const [activePage, setActivePage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/records?linesPerPage=16&page=${activePage}`).then((res) => {
-      setRecords(res.data);
+    axios.get(`${BASE_URL}/records?linesPerPage=${12}&page=${activePage}`)
+      .then((res) => {
+        setRecords(res.data);
     });
   }, [activePage]);
 
@@ -28,6 +30,9 @@ export default function Records() {
   return (
     <>
       <main className="page-container">
+
+        <Filters link={"/charts"} linkText={"VER GRÁFICO"} />
+
         <table className="records-table" cellPadding={"0"} cellSpacing={"0"}>
           <thead>
             <tr>
