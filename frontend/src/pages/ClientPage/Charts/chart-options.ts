@@ -1,4 +1,4 @@
-export const pieOptions = {
+export const pieOptions : any = {
   chart: {
     background: "transparent",
     foreColor: "red",
@@ -80,4 +80,4 @@ export const barOptions = {
       },
     },
   ],
-}
+};

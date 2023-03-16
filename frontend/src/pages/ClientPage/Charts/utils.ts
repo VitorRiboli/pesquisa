@@ -1,5 +1,4 @@
 import { Game } from './types';
-
 import { RecordItem } from '../Records/types';
 
 export const buildBarSeries = (games: Game[], records: RecordItem[]) => {
